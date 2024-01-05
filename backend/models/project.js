@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 const ProjectSchema = new Schema({
+    role:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'role'
+    },
     title:{
         type: String,
         required: true
