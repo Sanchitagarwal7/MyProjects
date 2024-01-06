@@ -25,8 +25,8 @@ router.post('/register', async (req, res)=>{
             return res.status(400).json({success, error: "Sorry this user already exists."});
         }
 
-        const salt = await bcrypt.genSaltSync(10);
-        const hash = await bcrypt.hashSync(req.body.password, salt);
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(req.body.password, salt);
 
         //Create New User
         user = await User.create({
