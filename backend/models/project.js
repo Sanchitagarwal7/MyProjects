@@ -15,8 +15,8 @@ const ProjectSchema = new Schema({
         required: true
     },
     roadmap:{
-        type: String,
-        default: ''
+        type: [String],
+        default: []
     },
     category: {
         type: String,
@@ -26,9 +26,9 @@ const ProjectSchema = new Schema({
         type: [String],
         default: []
     },
-    meta:{
-        likes: Number,
-        default: 0
+    likes:{
+        type: Number,
+        default: '0'
     }
 });
 
