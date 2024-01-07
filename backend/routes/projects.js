@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Project = require('../models/project.js');
 const {body, validationResult} = require('express-validator');
+const _ = require('lodash');
 
 //Route 0: add note at this api call ('api/projects/add');
 router.post('/add', async (req, res)=>{
@@ -43,11 +44,16 @@ router.post('/add', async (req, res)=>{
     }
 })
 
-//Route 1: FETCH ALL NOTES INITIALLY
-// router.get('/fetchAll', (req, res)=>{
-//     try{
-//         const notes = await 
-//     }
-// })
+//Route 1: FETCH ALL NOTES INITIALLY ("api/projects/add")
+router.get('/:role', async (req, res)=>{
+    try{
+        const target = _.lowerCase(req.params.role);
+        const projects = await Project.find({role: `${target}`});
+        res.send(projects);
+
+    } catch (error){
+        res.status(500).json("Wasn't able to add the project.");
+    }
+})
 
 module.exports = router;
