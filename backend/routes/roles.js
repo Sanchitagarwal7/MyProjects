@@ -7,6 +7,8 @@ const {body, validationResult} = require('express-validator');
 router.post("/add", async (req, res)=>{
     const {role} = req.body;
 
+    let lRole = role.toLowerCase(); //changed to lowercase
+
     //Add New Project
     const error = validationResult(req);
     let success = false;
@@ -15,7 +17,7 @@ router.post("/add", async (req, res)=>{
         return res.send(400).json({success, errors: error.array()});
     }
     try{
-        let UserRole = await Role.findOne({role: role});
+        let UserRole = await Role.findOne({role: lRole});
 
         //Check if user already exists or not
         if(UserRole)
@@ -25,7 +27,7 @@ router.post("/add", async (req, res)=>{
 
         //Create New Role
         UserRole = Role.create({
-            role: role
+            role: lRole
         });
         success = true;
         res.json({success});

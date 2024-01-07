@@ -6,7 +6,9 @@ const _ = require('lodash');
 
 //Route 0: add note at this api call ('api/projects/add');
 router.post('/add', async (req, res)=>{
-    const {title, summary, roadmap, category, tags, meta} = req.body;
+    const {role, title, summary, roadmap, category, meta} = req.body;
+
+    var lowerRoles = role.map(e => e.toLowerCase()); //changes to lowercase
 
     //Add New Project
     const error = validationResult(req);
@@ -26,11 +28,11 @@ router.post('/add', async (req, res)=>{
 
         //Create New Project
         project = Project.create({
+            role: lowerRoles,
             title: title,
             summary: summary,
             roadmap: roadmap,
             category: category,
-            tags: tags,
             meta: meta
         });
         success = true;
@@ -43,16 +45,18 @@ router.post('/add', async (req, res)=>{
     }
 })
 
-//Route 1: FETCH ALL NOTES INITIALLY ("api/projects/add")
+//Route 1: FETCH ALL NOTES INITIALLY ("api/projects/{role}")
 router.get('/:role', async (req, res)=>{
     try{
         const target = _.lowerCase(req.params.role);
+
         const projects = await Project.find({role: `${target}`});
         res.send(projects);
+        console.log(projects);
 
     } catch (error){
         res.status(500).json("Wasn't able to add the project.");
     }
-})
+});
 
 module.exports = router;

@@ -3,8 +3,8 @@ const {Schema} = mongoose;
 
 const ProjectSchema = new Schema({
     role:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'role'
+        type: [String],
+        required: true
     },
     title:{
         type: String,
@@ -21,10 +21,6 @@ const ProjectSchema = new Schema({
     category: {
         type: String,
         required: true
-    },
-    tags:{
-        type: [String],
-        default: []
     },
     likes:{
         type: Number,
