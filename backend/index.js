@@ -16,5 +16,5 @@ app.use('/api/projects', require('./routes/projects.js'));
 app.use('/api/roles', require('./routes/roles.js'));
 
 app.listen(port, ()=>{
-    console.log(`My-Projects connected to Port ${port}`);
+    console.log(`Backend connected to port: ${port}`);
 })
