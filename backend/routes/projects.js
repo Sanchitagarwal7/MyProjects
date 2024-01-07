@@ -6,7 +6,7 @@ const _ = require('lodash');
 
 //Route 0: add note at this api call ('api/projects/add');
 router.post('/add', async (req, res)=>{
-    const {role, title, summary, roadmap, category, tags, meta} = req.body;
+    const {title, summary, roadmap, category, tags, meta} = req.body;
 
     //Add New Project
     const error = validationResult(req);
@@ -26,7 +26,6 @@ router.post('/add', async (req, res)=>{
 
         //Create New Project
         project = Project.create({
-            role: role,
             title: title,
             summary: summary,
             roadmap: roadmap,
