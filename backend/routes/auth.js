@@ -9,7 +9,12 @@ const bcrypt = require('bcryptjs');
 const my_secret = "ILikeBigB";
 
 //Route 1: New User ('api/auth/register')
-router.post('/register', async (req, res)=>{
+router.post('/register', [
+    body('name').isLength({ min: 3 }),
+    body('email').isEmail(),
+    body('password').isLength({ min: 8 }),
+  ], async (req, res)=>{
+
     const error = validationResult(req);
     let success = false;
 
@@ -57,7 +62,10 @@ router.post('/register', async (req, res)=>{
 
 //Route 2: Existing User ('api/auth/login')
 
-router.post('/login', async (req, res)=>{
+router.post('/login',  [
+    body('email').isEmail(),
+    body('password').isLength({min: 8}),
+  ], async (req, res)=>{
     const error = validationResult(req);
     let success = false;
 

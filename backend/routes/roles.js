@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Role = require('../models/userrole');
-const {body, validationResult} = require('express-validator');
+const {validationResult} = require('express-validator');
 
 //Route 0: Add new Role ("/api/addRole")
 router.post("/add", async (req, res)=>{
