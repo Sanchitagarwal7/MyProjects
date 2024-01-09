@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { useNavigate } from 'react-router';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const Register = () => {
     let navigate = useNavigate();
@@ -47,6 +47,9 @@ const Register = () => {
             <div className="form-group">
                 <button type="submit" className="btn btn-block create-account">Register</button>
             </div>
+
+            <div className="d-flex justify-content-center"><NavLink to={"/login"}>Already have an account? Login then!</NavLink></div>
+
         </form>
         <div className="social-media">
             <h5>Sign up with social media</h5>
