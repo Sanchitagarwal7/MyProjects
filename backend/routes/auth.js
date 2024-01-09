@@ -78,11 +78,11 @@ router.post('/login',  [
         //Check if user already exists or not
         if(!user)
         {
-            return res.status(400).json({success, error: "Sorry this user does not exist."});
+            return res.status(400).json({success: false, error: "Sorry this user does not exist."});
         }
 
         //Check the Password of User
-        const passwordCompare = await bcrypt.compareSync(req.body.password, user.password); // true
+        const passwordCompare = bcrypt.compareSync(req.body.password, user.password); // true
         if(!passwordCompare)
         {
             return res.send(400).json({success: false, error: "Please Login With Correct Credentials"});

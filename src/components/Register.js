@@ -20,14 +20,11 @@ const Register = () => {
         if(json.success){
             localStorage.setItem('token', json.token);
             navigate('/');
-            console.log("Successfully Registered!");
-            console.log(json);
         }
     }
 
     const handleChange = (event)=>{
         setInfo({...info, [event.target.name]: event.target.value});
-        console.log(info);
     }
 
   return (
@@ -54,8 +51,8 @@ const Register = () => {
         <div className="social-media">
             <h5>Sign up with social media</h5>
             <div className="social-icons">
-                <a href="#"><i className="btn-social-icon btn-google fa fa-google" title="Google"></i></a>
-                <a href="#"><i className="btn-social-icon btn-github fa fa-github" title="GitHub"></i></a>
+                <a href="?"><i className="btn-social-icon btn-google fa fa-google" title="Google"></i></a>
+                <a href="?"><i className="btn-social-icon btn-github fa fa-github" title="GitHub"></i></a>
             </div>
         </div>
     </div>
