@@ -1,9 +1,10 @@
 import React from 'react'
+import AllProjects from './AllProjects';
 
 const Home = () => {
   return (
     <>
-      <h1>Hello Welcome to My-Projects</h1>
+    <AllProjects/>
     </>
   )
 }

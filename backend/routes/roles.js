@@ -49,7 +49,7 @@ router.get("/get", async (req, res)=>{
         return res.send(400).json({success, errors: error.array()});
     }
     try{
-        let UserRoles = await Role.find({});
+        let UserRoles = await Role.find({}).select('role');
 
         success = true;
         res.json({success, UserRoles});
