@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Project = require('../models/project.js');
-const {body, validationResult} = require('express-validator');
+const {validationResult} = require('express-validator');
 const _ = require('lodash');
 
 //Route 0: add project at this api call ('api/projects/add');

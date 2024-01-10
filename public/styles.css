@@ -1,5 +1,5 @@
 body{
-    background-color: #12012D;
+    background-color: #090016;
     color: aliceblue;
 }
 
@@ -20,7 +20,7 @@ body{
 
 .registration-form .form-icon{
 	text-align: center;
-    background-color: #12012D;
+    background-color: #090016;
     border-radius: 50%;
     font-size: 40px;
     color: white;
@@ -42,7 +42,7 @@ body{
     padding: 10px 20px;
     font-size: 18px;
     font-weight: bold;
-    background-color: #12012D;
+    background-color: #090016;
     border: none;
     color: white;
     margin-top: 20px;
@@ -69,7 +69,7 @@ body{
 .registration-form .social-icons a{
     font-size: 23px;
     margin: 0 3px;
-    color: #12012D;
+    color: #090016;
     border: 1px solid;
     border-radius: 50%;
     width: 45px;
@@ -96,4 +96,29 @@ body{
         font-size: 30px;
         line-height: 70px;
     }
+}
+
+/*TABLE HEADERS*/
+#head{
+    padding: 10px;
+}
+
+#item_style{
+    padding: 10px;
+}
+
+tr:nth-child(even) { 
+    background-color: #2A2636; 
+}
+
+.beginner{
+   color: green;
+}
+
+.intermidiate{
+    color: #FFC107;
+}
+
+.hard{
+    color: #D50000;
 }

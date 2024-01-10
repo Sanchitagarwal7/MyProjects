@@ -1,14 +1,17 @@
 import React from 'react'
 import AllProjects from './AllProjects';
 import Filter from './Filter';
+import ProjectState from '../context/projects/ProjectState';
 
 const Home = () => {
   return (
     <>
-    <Filter/>
-    <AllProjects/>
+    <ProjectState>
+      <Filter/>
+      <AllProjects/>
+    </ProjectState>
     </>
   )
 }
 
-export default Home
+export default Home;

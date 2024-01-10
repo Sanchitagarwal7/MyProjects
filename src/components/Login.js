@@ -22,17 +22,11 @@ const Login = () => {
           if(json.success){
               localStorage.setItem('token', json.token);
               navigate('/');
-              console.log("Successfully Login!");
           }
-          else{
-            console.log("User dosent exist");;
-          }
-          console.log(json);
       }
 
       const handleChange = (event)=>{
           setInfo({...info, [event.target.name]: event.target.value});
-          console.log(info);
       }
 
     return (
