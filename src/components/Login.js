@@ -4,10 +4,12 @@ import { NavLink, useNavigate } from 'react-router-dom';
 const Login = () => {
       let navigate = useNavigate();
       const [info, setInfo] = useState({email: "", password: ""});
+
+      const host = "http://localhost:4999";
       
       const handleSubmit = async (event)=>{
           event.preventDefault(); //prevents refresh
-          const response = await fetch("http://localhost:4999/api/auth/login", {
+          const response = await fetch(`${host}/api/auth/login`, {
               method: "POST",
               headers: {
                   "Content-Type": "application/json"

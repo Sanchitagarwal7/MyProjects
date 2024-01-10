@@ -48,31 +48,29 @@ router.post('/add', async (req, res)=>{
 });
 
 
-// //Route 1: GET projects by name ("api/projects/name)
-// router.get('/:title', async (req, res)=>{
-//     try{
-//         const lTitle = _.lowerCase(req.params.title);
+//Route 1: GET all projects ("api/projects/get)
+router.get('/get', async (req, res)=>{
+    try{
+        // Note no `await` here
+        const cursor = Project.find({}).cursor();
 
-//         // Note no `await` here
-//         const cursor = Project.find({title: `${lTitle}`}).cursor();
+        const projects = []
 
-//         const projects = []
+        for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
+            projects.push(doc);
+        }
 
-//         for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
-//             projects.push(doc);
-//         }
+        if(projects.length === 0){
+            return res.status(500).json("No project of this name is found.");
+        }
 
-//         if(projects.length === 0){
-//             return res.status(500).json("No project of this name is found.");
-//         }
+        res.send(projects);
+        console.log(projects);
 
-//         res.send(projects);
-//         console.log(projects);
-
-//     } catch (error){
-//         res.status(500).json("Wasn't able to get projects.");
-//     }
-// });
+    } catch (error){
+        res.status(500).json("Wasn't able to get projects.");
+    }
+});
 
 //Route 2: GET projects by role ("api/projects/{role}")
 router.get('/:role', async (req, res)=>{
@@ -103,13 +101,12 @@ router.get('/:role', async (req, res)=>{
 });
 
 //Route 3: GET projects by category ("api/projects/role/{category}")
-router.get('/:role/:category', async (req, res)=>{
+router.get('/r/:category', async (req, res)=>{
     try{
-        const lRole = _.lowerCase(req.params.role);
         const lCategory = _.lowerCase(req.params.category);
 
         // Note no `await` here
-        const cursor = Project.find({role: `${lRole}`, category: `${lCategory}`}).cursor();
+        const cursor = Project.find({category: `${lCategory}`}).cursor();
 
         const projects = []
 

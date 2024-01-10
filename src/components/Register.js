@@ -4,10 +4,12 @@ import { NavLink, useNavigate } from 'react-router-dom';
 const Register = () => {
     let navigate = useNavigate();
     const [info, setInfo] = useState({name: "", email: "", password: ""});
+
+    const host = "http://localhost:4999";
     
     const handleSubmit = async (event)=>{
         event.preventDefault(); //prevents refresh
-        const response = await fetch("http://localhost:4999/api/auth/register", {
+        const response = await fetch(`${host}/api/auth/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
