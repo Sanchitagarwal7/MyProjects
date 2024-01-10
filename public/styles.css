@@ -98,7 +98,7 @@ body{
     }
 }
 
-/*TABLE HEADERS*/
+/*TABLE*/
 #head{
     padding: 10px;
 }
@@ -122,3 +122,5 @@ tr:nth-child(even) {
 .hard{
     color: #D50000;
 }
+
+/*SEARCH BOX*/

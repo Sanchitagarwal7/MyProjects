@@ -1,13 +1,13 @@
 import React from 'react'
 import AllProjects from './AllProjects';
-import Filter from './Filter';
+import Navbar from './Navbar';
 import ProjectState from '../context/projects/ProjectState';
 
 const Home = () => {
   return (
     <>
     <ProjectState>
-      <Filter/>
+      <Navbar/>
       <AllProjects/>
     </ProjectState>
     </>
