@@ -1,12 +1,21 @@
 import React from "react";
+import Filter from "./Filter"
 
 const Navbar = () => {
   return (
     <>
-      <form id="search">
-        <input type="search" placeholder="Search..."/>
-        <button type="submit">Search</button>
-      </form>
+      <div>LOGO</div>
+      <div className="d-flex justify-content-around">
+        <div>
+          <Filter title={"Roles"}/>
+        </div>
+        <div>
+          <Filter title={"Tags"}/>
+        </div>
+        <div>
+          <Filter title={"Category"}/>
+        </div>
+      </div>
     </>
   );
 };

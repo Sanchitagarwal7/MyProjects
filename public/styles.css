@@ -114,13 +114,15 @@ tr:nth-child(even) {
 .beginner{
    color: green;
 }
-
 .intermidiate{
     color: #FFC107;
 }
-
 .hard{
     color: #D50000;
 }
 
-/*SEARCH BOX*/
+/*FILTER BUTTONS*/
+#dropdown-basic, #dropdown-basic:hover, #dropdown-basic:active, #dropdown-basic:visited {
+    box-shadow: none !important;
+    background-color: #61305D !important;
+}

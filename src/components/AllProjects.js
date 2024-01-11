@@ -24,24 +24,28 @@ const AllProjects = () => {
   return (
     <>
       <table className='container-fluid'>
-        <tr>
-            <th id='head'>S.No</th>
-            <th id='head'>Title</th>
-            <th id='head'>Category</th>
-            <th id='head'>Likes</th>
-        </tr>
-        {projects.length !== 0 ? Array.from(projects).map((project)=>{
-          count+=1;
-            return (
-                <ProjectItem
-                    key={project.id}
-                    sNo={count}
-                    title={project.title}
-                    category={project.category}
-                    likes={project.likes}
-                />
-            );
-        }) : <h3 style={{textAlign: "center"}}> No Projects to Display</h3>}
+        <thead>
+          <tr>
+              <th id='head'>S.No</th>
+              <th id='head'>Title</th>
+              <th id='head'>Category</th>
+              <th id='head'>Likes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {projects.length !== 0 ? Array.from(projects).map((project)=>{
+            count+=1;
+              return (
+                  <ProjectItem
+                      key={project.id}
+                      sNo={count}
+                      title={project.title}
+                      category={project.category}
+                      likes={project.likes}
+                  />
+              );
+          }) : <h3 style={{textAlign: "center"}}> No Projects to Display</h3>}
+        </tbody>
       </table> 
     </>
   )

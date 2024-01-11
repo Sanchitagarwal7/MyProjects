@@ -65,8 +65,6 @@ router.get('/get', async (req, res)=>{
         }
 
         res.send(projects);
-        console.log(projects);
-
     } catch (error){
         res.status(500).json("Wasn't able to get projects.");
     }
@@ -92,8 +90,6 @@ router.get('/:role', async (req, res)=>{
         }
 
         res.send(projects);
-        console.log(projects);
-
     } catch (error){
         console.log(error);
         res.status(500).json("Wasn't able to get projects.");
@@ -119,8 +115,6 @@ router.get('/r/:category', async (req, res)=>{
         }
 
         res.send(projects);
-        console.log(projects);
-
     } catch (error){
         res.status(500).json("Wasn't able to get projects.");
     }
