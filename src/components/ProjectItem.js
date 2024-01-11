@@ -18,7 +18,7 @@ const ProjectItem = (props) => {
     <>
     <tr>
         <td id="item_style">{props.sNo}</td>
-        <td id="item_style">{props.title}</td>
+        <td id="item_style"><a href={`/get/${props.dbTitle}`}>{props.title}</a></td>
         <td id="item_style"><span className={setClass()}>{Capitalize(props.category)}</span></td>
         <td id="item_style">{props.likes}</td>
     </tr>

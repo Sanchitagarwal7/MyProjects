@@ -6,11 +6,10 @@ const _ = require('lodash');
 
 //Route 0: add project at this api call ('api/projects/add');
 router.post('/add', async (req, res)=>{
-    const {role, title, summary, roadmap, category, meta} = req.body;
+    const {role, title, dbTitle, summary, roadmap, category, likes} = req.body;
 
     var lowerRoles = role.map(e => e.toLowerCase()); //changes to lowercase
     var lowerCategory = category.toLowerCase(); //changes to lowercase
-    var lowerName = title.toLowerCase(); //changes to lowercase
 
     //Add New Project
     const error = validationResult(req);
@@ -31,11 +30,12 @@ router.post('/add', async (req, res)=>{
         //Create New Project
         project = Project.create({
             role: lowerRoles,
-            title: lowerName,
+            title: title,
+            dbTitle: dbTitle,
             summary: summary,
             roadmap: roadmap,
             category: lowerCategory,
-            meta: meta
+            likes: likes
         });
         success = true;
         res.json({success});
@@ -63,62 +63,79 @@ router.get('/get', async (req, res)=>{
         if(projects.length === 0){
             return res.status(500).json("No project of this name is found.");
         }
-
         res.send(projects);
     } catch (error){
         res.status(500).json("Wasn't able to get projects.");
     }
 });
 
-//Route 2: GET projects by role ("api/projects/{role}")
-router.get('/:role', async (req, res)=>{
+//Route 2: GET projects by category ("api/projects/role/{category}")
+router.get('/get/:dbTitle', async (req, res)=>{
     try{
-        const target = _.lowerCase(req.params.role);
+        const dbTitle = req.params.dbTitle;
 
         // Note no `await` here
-        const cursor = Project.find({role: `${target}`}).cursor();
 
-        const projects = []
+        const project = await Project.find({dbTitle: `${dbTitle}`});
 
-        for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
-            projects.push(doc);
-        }
-
-
-        if(projects.length === 0){
+        if(project.length === 0){
             return res.status(500).json("No project of this parameter is found.");
         }
+        res.send(project);
 
-        res.send(projects);
-    } catch (error){
-        console.log(error);
-        res.status(500).json("Wasn't able to get projects.");
-    }
-});
-
-//Route 3: GET projects by category ("api/projects/role/{category}")
-router.get('/r/:category', async (req, res)=>{
-    try{
-        const lCategory = _.lowerCase(req.params.category);
-
-        // Note no `await` here
-        const cursor = Project.find({category: `${lCategory}`}).cursor();
-
-        const projects = []
-
-        for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
-            projects.push(doc);
-        }
-
-        if(projects.length === 0){
-            return res.status(500).json("No project of this parameter is found.");
-        }
-
-        res.send(projects);
     } catch (error){
         res.status(500).json("Wasn't able to get projects.");
     }
 });
+
+// //Route 2: GET projects by role ("api/projects/{role}")
+// router.get('/:role', async (req, res)=>{
+//     try{
+//         const target = _.lowerCase(req.params.role);
+
+//         // Note no `await` here
+//         const cursor = Project.find({role: `${target}`}).cursor();
+
+//         const projects = []
+
+//         for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
+//             projects.push(doc);
+//         }
+
+
+//         if(projects.length === 0){
+//             return res.status(500).json("No project of this parameter is found.");
+//         }
+
+//         res.send(projects);
+//     } catch (error){
+//         console.log(error);
+//         res.status(500).json("Wasn't able to get projects.");
+//     }
+// });
+
+// //Route 3: GET projects by category ("api/projects/role/{category}")
+// router.get('/r/:category', async (req, res)=>{
+//     try{
+//         const param = req.body.param;
+//         // Note no `await` here
+//         const cursor = Project.find({param: `${param}`}).cursor();
+
+//         const projects = []
+
+//         for (let doc = await cursor.next(); doc != null; doc = await cursor.next()) {
+//             projects.push(doc);
+//         }
+
+//         if(projects.length === 0){
+//             return res.status(500).json("No project of this parameter is found.");
+//         }
+
+//         res.send(projects);
+//     } catch (error){
+//         res.status(500).json("Wasn't able to get projects.");
+//     }
+// });
 
 
 module.exports = router;

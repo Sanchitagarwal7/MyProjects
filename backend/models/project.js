@@ -10,6 +10,10 @@ const ProjectSchema = new Schema({
         type: String,
         required: true
     },
+    dbTitle:{
+        type: String,
+        required: true
+    },
     summary:{
         type: String,
         required: true

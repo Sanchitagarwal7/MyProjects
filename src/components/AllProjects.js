@@ -39,6 +39,7 @@ const AllProjects = () => {
                   <ProjectItem
                       key={project.id}
                       sNo={count}
+                      dbTitle={project.dbTitle}
                       title={project.title}
                       category={project.category}
                       likes={project.likes}

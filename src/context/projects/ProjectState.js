@@ -50,9 +50,24 @@ const ProjectState = (props) => {
 
         setProjects(json);
     }
+
+    const getSpecificProject = async ()=>{
+      const response = await fetch(`${host}/api/projects/${props.dbTitle}`,{
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "token":localStorage.getItem('token'),
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        }
+    });
+
+    const json = await response.json();
+
+    setProjects(json);
+    }
   return (
     <>
-      <ProjectContext.Provider value={{projects, setProjects, getProjects, filterByCategory, filterByRole}}>
+      <ProjectContext.Provider value={{projects, setProjects, getProjects, filterByCategory, filterByRole, getSpecificProject}}>
         {props.children}
       </ProjectContext.Provider>
     </>

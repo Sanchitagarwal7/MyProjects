@@ -1,6 +1,6 @@
 body{
-    background-color: #090016;
-    color: aliceblue;
+    background-color: white;
+    color: #090016;
 }
 
 /* REGISTRATION FORM */
@@ -108,7 +108,7 @@ body{
 }
 
 tr:nth-child(even) { 
-    background-color: #2A2636; 
+    background-color: #9fadca; 
 }
 
 .beginner{
