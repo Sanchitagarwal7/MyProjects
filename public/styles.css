@@ -1,6 +1,6 @@
 body{
-    background-color: white;
-    color: #090016;
+    background-color: #5A92AF;
+    color: aliceblue;
 }
 
 /* REGISTRATION FORM */
@@ -20,7 +20,7 @@ body{
 
 .registration-form .form-icon{
 	text-align: center;
-    background-color: #090016;
+    background-color: #5A92AF;
     border-radius: 50%;
     font-size: 40px;
     color: white;
@@ -42,7 +42,7 @@ body{
     padding: 10px 20px;
     font-size: 18px;
     font-weight: bold;
-    background-color: #090016;
+    background-color: #5A92AF;
     border: none;
     color: white;
     margin-top: 20px;
@@ -69,7 +69,7 @@ body{
 .registration-form .social-icons a{
     font-size: 23px;
     margin: 0 3px;
-    color: #090016;
+    color: #5A92AF;
     border: 1px solid;
     border-radius: 50%;
     width: 45px;
@@ -108,7 +108,7 @@ body{
 }
 
 tr:nth-child(even) { 
-    background-color: #9fadca; 
+    background-color: #86C1D4; 
 }
 
 .beginner{

@@ -23,7 +23,7 @@ const AllProjects = () => {
 
   return (
     <>
-      <table className='container-fluid'>
+      <table className='container'>
         <thead>
           <tr>
               <th id='head'>S.No</th>
